@@ -1,8 +1,12 @@
 package com.rob.katkiller;
 
-
-
-public class Entity extends KatKiller {
+public class Entity {
+	
+	public double xVel, yVel;
+	
+	public void update() {
+		
+	}
 	
 	}
 	
