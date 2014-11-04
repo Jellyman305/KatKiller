@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -29,14 +28,14 @@ public class KatKiller extends ApplicationAdapter {
 		@Override
 		public void create() {
 			
-			tiledMap = new TmxMapLoader().load("Tiles/map.tmx");
-			tiledMapRenderer = new OrthogonalTiledMapRenderer (tiledMap);
+			// = new TmxMapLoader().load("Tiles/map.tmx");
+			//tiledMapRenderer = new OrthogonalTiledMapRenderer (tiledMap);
 			
 			player = new Player("kat.png");
-			//woodBlock = new WoodBlock(0, 0, "wood.png");
-			//g1 = new GrassBlock(32, 0, "grass.png");
-			//g2 = new GrassBlock(64, 0, "grass.png");
-			//g3 = new GrassBlock(64 + 32, 32, "grass.png");
+			woodBlock = new WoodBlock(0, 0, 32, 32, "wood.png");
+			g1 = new GrassBlock(32, 32, 32, 32, "grass.png");
+			g2 = new GrassBlock(64, 0, 32, 32, "grass.png");
+			g3 = new GrassBlock(64 + 32, 32, 32, 32, "grass.png");
 			camera = new OrthographicCamera();
 			camera.setToOrtho(false, 1920, 1070);
 						
@@ -62,17 +61,23 @@ public class KatKiller extends ApplicationAdapter {
 			}*/
 			camera.update();
 			
-			tiledMapRenderer.setView(camera);
-			tiledMapRenderer.render();
+			
+			
+			//tiledMapRenderer.setView(camera);
+			//tiledMapRenderer.render();
 			
 			batch.setProjectionMatrix(camera.combined);
 			
 			player.render(batch);
-			//woodBlock.render(batch);
-			//g1.render(batch);
-			//g2.render(batch);
-			//g3.render(batch);
+			woodBlock.render(batch, player, camera);
+			g1.render(batch, player, camera);
+			g2.render(batch, player, camera);
+			g3.render(batch, player, camera);
 			
+			
+		}	
+		
+		public void update() {
 			
 		}
 		

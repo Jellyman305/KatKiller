@@ -18,7 +18,7 @@ public class Player extends Entity {
 		image = new Texture(Gdx.files.internal(url));
 		
 		rect = new Rectangle();
-		rect.x = 0;
+		rect.x = -50;
 		rect.y = 32;
 		rect.width = 22;
 		rect.height = 40;
@@ -30,6 +30,9 @@ public class Player extends Entity {
 		batch.begin();
 		batch.draw(image, rect.x, rect.y);
 		batch.end();
+		
+		if(Gdx.input.isKeyPressed(Keys.SPACE)) rect.y += 600 * Gdx.graphics.getDeltaTime();
+		if(Gdx.input.isKeyPressed(Keys.DPAD_DOWN)) rect.y -= 600 * Gdx.graphics.getDeltaTime();
 		
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) rect.x += 300 * Gdx.graphics.getDeltaTime();
 		if(Gdx.input.isKeyPressed(Keys.LEFT)) rect.x -= 300 * Gdx.graphics.getDeltaTime();
